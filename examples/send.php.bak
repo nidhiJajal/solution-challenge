@@ -1,0 +1,21 @@
+<?php
+	include "post_request.php";
+
+	$cn=mysqli_connect("localhost","root","","ms");
+
+	$qq="insert into r_request select name, state, city, pincode, blood_group, health_issue from registration" ;
+										
+	$rr=mysqli_query($cn,$qq);
+					
+	if($rr)
+	{
+	?>
+		echo "<script>alert('1 row(s) inserted'); 
+				window.location.replace("post_request.php");</script>";
+	<?php
+	}
+	else
+	{
+		echo "error";
+	}
+?>

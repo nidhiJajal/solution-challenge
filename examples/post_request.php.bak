@@ -1,0 +1,84 @@
+
+<?php
+	include "header.php"
+?>
+
+      <div class="content">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h2 class="card-title">Post Request</h2>
+              
+            </div>
+            <div class="card-body">
+              <!--<form class="navbar-form">-->
+              <div class="input-group no-border">
+                <input type="text" value="" class="form-control" name="search" placeholder="Search blood group">
+                <button type="submit" class="btn btn-default btn-round btn-just-icon">
+                  <i class="material-icons">search</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+            <!--</form>-->
+            </div>
+			<div class="col-md-12">
+              <div class="card card-plain">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+						<thead class="">
+							<th>Name</th>
+							<th>state</th>
+							<th>City</th>
+							<th>pincode</th>
+							<th>blood group</th>
+							<th>health issue</th>
+							<th>action</th>
+						</thead>
+						<?php
+							$cn= mysqli_connect("localhost","root","","ms");
+							$q="select * from registration";
+							
+							$r=mysqli_query($cn,$q);
+							while($row=mysqli_fetch_array($r))
+							{
+								?>
+								
+								<tbody>
+								<tr>
+									<?php $name = $row['name'] ?>
+									<?php $email = $row['email'] ?>
+									<?php $state = $row['state'] ?>
+									<?php $city = $row['city'] ?>
+									<?php $pincode = $row['pincode'] ?>
+									<?php $blood_grp = $row['blood_group'] ?>
+									<?php $h_issue = $row['health_issue'] ?>
+									<td><?php echo $name ?></td>
+									<td><?php echo $state ?></td>
+									<td><?php echo $city ?></td>
+									<td><?php echo $pincode ?></td>
+									<td><?php echo $blood_grp ?></td>
+									<td><?php echo $h_issue ?></td>
+									<td>
+									<a href="postrequest.php?id=<?php echo $row['r_id'];?>">
+									<input type="button" class="btn btn-primary btn-round" name="send" value="send request"></td>
+									</a>
+								</tr>
+								</tbody>
+								<?php
+							}?>
+							</table>
+							
+			      </div>
+                </div>
+              </div>
+            </div>
+	      </div>
+		  
+        </div>
+      </div>
+
+	  <?php
+		include "footer.php";
+	  ?>
+      
